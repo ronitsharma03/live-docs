@@ -1,6 +1,6 @@
 'use server';
 
-import { clerkClient, EmailAddress } from "@clerk/nextjs/server";
+import { clerkClient } from "@clerk/nextjs/server";
 import { parseStringify } from "../utils";
 
 export const getClerkUsers = async ({userIds}: {userIds: string[]}) => {
@@ -9,6 +9,7 @@ export const getClerkUsers = async ({userIds}: {userIds: string[]}) => {
         const { data } = await clerkClient.users.getUserList({
             emailAddress: userIds,
         });
+        
 
         const users = data.map((user) => ({
             id: user.id,
