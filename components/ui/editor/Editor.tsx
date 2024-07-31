@@ -14,6 +14,7 @@ import { FloatingComposer, FloatingThreads, liveblocksConfig, LiveblocksPlugin, 
 import Loader from "@/components/Loader";
 import FloatingToolbarPlugin from "./plugins/FloatingToolbarPlugin";
 import { useThreads } from "@liveblocks/react/suspense";
+import Comments from "@/components/Comments";
 
 // Catch any errors that occur during Lexical updates and log them
 // or throw them as needed. If you don't throw them, Lexical will
@@ -57,7 +58,7 @@ export function Editor({
           {status === "not-loaded" || status === "loading" ? (
             <Loader />
           ) : (
-            <div className="editor-inner min-h-[1100px] relative h-fit w-full mb-5 max-w-[800px] shadow-md lg:mb-10">
+            <div className="editor-inner min-h-[1100px] relative h-fit w-full mb-5 max-w-[900px] shadow-md lg:mb-10">
               <RichTextPlugin
                 contentEditable={
                   <ContentEditable className="editor-input h-full" />
@@ -74,6 +75,7 @@ export function Editor({
           <LiveblocksPlugin>
             <FloatingComposer className="w-[350px]" />
             <FloatingThreads threads={threads}/>
+            <Comments />
           </LiveblocksPlugin>
         </div>
       </div>
